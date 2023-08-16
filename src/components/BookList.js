@@ -17,6 +17,7 @@ const BookList = () => {
   const fetchBooks = async () => {
     try {
       const response = await axios.get('http://3.92.181.206:8000/api/books/');
+      console.log(response.data);
       setBooks(response.data);
     } catch (error) {
       console.error('Error fetching books:', error);
