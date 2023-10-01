@@ -13,14 +13,14 @@ const MemberCard = ({ member, onDeleteMember, onUpdateMember }) => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get('http://3.92.181.206:8000/api/transactions/');
+      const response = await axios.get('http://18.212.181.90:8000/api/transactions/');
       const memberTransactions = response.data.filter(
         transaction => transaction.member === member.id
       );
       
       // Fetch book details for each transaction
       const transactionsWithBookNames = await Promise.all(memberTransactions.map(async transaction => {
-        const bookResponse = await axios.get(`http://3.92.181.206:8000/api/books/${transaction.book}/`);
+        const bookResponse = await axios.get(`http://18.212.181.90:8000/api/books/${transaction.book}/`);
         return {
           ...transaction,
           book_name: bookResponse.data.title // Assuming your book model has a "title" field
@@ -51,7 +51,7 @@ const MemberCard = ({ member, onDeleteMember, onUpdateMember }) => {
   const handleReturnBook = async (transactionId) => {
     const returnDate = new Date().toISOString().slice(0, 10); // Today's date
     try {
-      const response = await axios.post('http://3.92.181.206:8000/api/return-book/', {
+      const response = await axios.post('http://18.212.181.90:8000/api/return-book/', {
         transaction_id: transactionId,
         return_date: returnDate,
       });
@@ -175,10 +175,10 @@ const MemberList = () => {
 
   const fetchMembers = async () => {
     try {
-      const response = await axios.get('http://3.92.181.206:8000/api/members/');
+      const response = await axios.get('http://18.212.181.90:8000/api/members/');
       const membersWithIssuedBooks = await Promise.all(response.data.map(async member => {
         const issuedBooksResponse = await Promise.all(member.books_issued.map(async bookId => {
-          const bookResponse = await axios.get(`http://3.92.181.206:8000/api/books/${bookId}/`);
+          const bookResponse = await axios.get(`http://18.212.181.90:8000/api/books/${bookId}/`);
           console.log('bookResponse:', bookResponse.data);
           return bookResponse.data;
         }));
@@ -195,7 +195,7 @@ const MemberList = () => {
 
   const deleteMember = async (memberId) => {
     try {
-      await axios.delete(`http://3.92.181.206:8000/api/members/${memberId}/`);
+      await axios.delete(`http://18.212.181.90:8000/api/members/${memberId}/`);
       fetchMembers();
     } catch (error) {
       console.error('Error deleting member:', error);
@@ -205,7 +205,7 @@ const MemberList = () => {
   const updateMember = async (updatedMember) => {
     try {
       await axios.put(
-        `http://3.92.181.206:8000/api/members/${updatedMember.id}/`,
+        `http://18.212.181.90:8000/api/members/${updatedMember.id}/`,
         updatedMember
       );
       fetchMembers();
@@ -216,7 +216,7 @@ const MemberList = () => {
 
   const addMember = async () => {
     try {
-      await axios.post('http://3.92.181.206:8000/api/members/', {
+      await axios.post('http://18.212.181.90:8000/api/members/', {
         name: newMemberName,
         amountdue: newMemberAmountDue,
       });

@@ -16,7 +16,7 @@ const BookList = () => {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get('http://3.92.181.206:8000/api/books/');
+      const response = await axios.get('http://18.212.181.90:8000/api/books/');
       console.log(response.data);
       setBooks(response.data);
     } catch (error) {
@@ -26,7 +26,7 @@ const BookList = () => {
 
   const fetchMembers = async () => {
     try {
-      const response = await axios.get('http://3.92.181.206:8000/api/members/');
+      const response = await axios.get('http://18.212.181.90:8000/api/members/');
       setMembers(response.data);
     } catch (error) {
       console.error('Error fetching members:', error);
@@ -47,7 +47,7 @@ const BookList = () => {
 
   const handleIssuing = async () => {
     try {
-      const response = await axios.post('http://3.92.181.206:8000/api/issue-book/', {
+      const response = await axios.post('http://18.212.181.90:8000/api/issue-book/', {
         book: selectedBook.id,
         member: selectedMember,
         issue_date: new Date().toISOString().split('T')[0],
@@ -61,7 +61,7 @@ const BookList = () => {
 
   const handleDeleteBook = async (bookId) => {
     try {
-      await axios.delete(`http://3.92.181.206:8000/api/books/${bookId}/`);
+      await axios.delete(`http://18.212.181.90:8000/api/books/${bookId}/`);
       fetchBooks(); // Refresh book list
     } catch (error) {
       console.error('Error deleting book:', error);
