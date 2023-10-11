@@ -21,7 +21,9 @@ const ImportBooksPage = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    // <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="bg-gradient-to-r from-amber-600 to-amber-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+
       <h2 className="text-xl font-semibold mb-4">Import Books</h2>
       <label className="block mb-2">
         Book Name:

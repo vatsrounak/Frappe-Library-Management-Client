@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="bg-blue-500 py-4">
+    <header className="bg-yellow-500 py-4">
       <nav className="container mx-auto">
         <ul className="flex justify-center space-x-6">
           <li>
             <Link
               to="/books"
-              className="text-white hover:text-blue-300 transition duration-300"
+              className="text-purple-800 hover:text-black transition duration-300 font-semibold text-lg"
             >
               Books
             </Link>
@@ -17,16 +17,15 @@ const Header = () => {
           <li>
             <Link
               to="/members"
-              className="text-white hover:text-blue-300 transition duration-300"
+              className="text-purple-800 hover:text-black transition duration-300 font-semibold text-lg"
             >
               Members
             </Link>
           </li>
-          
           <li>
             <Link
               to="/import-books"
-              className="text-white hover:text-blue-300 transition duration-300"
+              className="text-purple-800 hover:text-black transition duration-300 font-semibold text-lg"
             >
               Import Books
             </Link>
@@ -38,5 +37,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
